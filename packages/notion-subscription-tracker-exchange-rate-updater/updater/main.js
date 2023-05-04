@@ -9,7 +9,7 @@ const notion = new Client({ auth: process.env.NOTION_API_KEY });
 
 let exchangeRate = {};
 
-(async () => {
+exports.main = async (args) => {
   const databaseResponse = await notion.databases.query({
     database_id: databaseId,
   });
@@ -40,4 +40,4 @@ let exchangeRate = {};
       console.log("process page ID: ", pageId);
     }
   }
-})();
+};

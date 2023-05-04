@@ -1,0 +1,30 @@
+parameters: {}
+environment: {}
+packages:
+    - name: notion-subscription-tracker-exchange-rate-updater
+      shared: false
+      environment: 
+        NOTION_DATABASE_ID: ${NOTION_DATABASE_ID}
+        NOTION_API_KEY: ${NOTION_API_KEY}
+        BOT_API_CLIENT_ID: ${BOT_API_CLIENT_ID}
+      parameters: {}
+      annotations: {}
+      functions:
+        - name: updater
+          binary: false
+          main: "main"
+          runtime: nodejs:18
+          web: true
+          websecure: false
+          parameters: {}
+          environment: {}
+          annotations: {}
+          limits: 
+            timeout: 120000
+            memory: 256
+          triggers:
+            - name: cron-trigger
+              sourceType: scheduler
+              sourceDetails:
+                cron: "0 5 * * *"
+                withBody: {}
