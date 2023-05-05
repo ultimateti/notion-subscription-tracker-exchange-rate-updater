@@ -23,6 +23,11 @@ exports.getExchangeRate = async (currency, divider) => {
     );
     try {
       const respJson = await response.json();
+      const rateString = respJson.result.data.data_detail[0].selling;
+      if (rateString === "") {
+        console.log("There is no exchange rate for ", currency, " yesterday");
+        return -1;
+      }
       const exchangeRate =
         parseFloat(respJson.result.data.data_detail[0].selling) / divider;
       console.log(
