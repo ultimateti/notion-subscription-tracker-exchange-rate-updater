@@ -6,7 +6,7 @@ packages:
       environment: 
         NOTION_DATABASE_ID: ${NOTION_DATABASE_ID}
         NOTION_API_KEY: ${NOTION_API_KEY}
-        BOT_API_CLIENT_ID: ${BOT_API_CLIENT_ID}
+        BOT_API_TOKEN: ${BOT_API_TOKEN}
       parameters: {}
       annotations: {}
       functions:
