@@ -1,10 +1,10 @@
 const { getYesterday } = require("./dateUtils");
 
-const BOTAPIClientId = process.env.BOT_API_CLIENT_ID;
+const BOTAPIToken = process.env.BOT_API_TOKEN;
 
 exports.getExchangeRate = async (currency, divider) => {
   const BOTEndpoint =
-    "https://apigw1.bot.or.th/bot/public/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?";
+    "https://gateway.api.bot.or.th/Stat-ExchangeRate/v2/DAILY_AVG_EXG_RATE/?";
 
   try {
     const response = await fetch(
@@ -17,7 +17,7 @@ exports.getExchangeRate = async (currency, divider) => {
       {
         method: "GET",
         headers: {
-          "X-IBM-Client-Id": BOTAPIClientId,
+          Authorization: BOTAPIToken,
         },
       }
     );

@@ -6,14 +6,16 @@ console.log(databaseId);
 
 const { Client } = require("@notionhq/client");
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
-
 let exchangeRate = {};
 
 exports.main = async (args) => {
-  const databaseResponse = await notion.databases.query({
+  const databaseResponse = await notion.databases.retrieve({
     database_id: databaseId,
   });
-  for (let page of databaseResponse.results) {
+  const datasouceResponse = await notion.dataSources.query({
+    data_source_id: databaseResponse.data_sources[0].id,
+  });
+  for (let page of datasouceResponse.results) {
     const pageId = page.id;
     const pageProps = page.properties;
     if (pageProps.Currency.rich_text.length > 0) {

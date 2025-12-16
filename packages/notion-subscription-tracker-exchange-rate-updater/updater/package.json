@@ -4,13 +4,13 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npx run-func main.js main"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@notionhq/client": "^2.2.5",
-    "date-and-time": "^3.0.0",
-    "dotenv": "^16.0.3"
+    "@notionhq/client": "^5.6.0",
+    "date-and-time": "^4.1.2",
+    "dotenv": "^17.2.3"
   }
 }
