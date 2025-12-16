@@ -22,6 +22,18 @@ jobs:
         uses: digitalocean/action-doctl@v2
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - name: Cache doctl serverless plugins
+        id: cache-doctl-serverless
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-doctl-serverless
+        with:
+          path: ~/.config/doctl/sandbox
+          key: ${{ runner.os }}-doctl-sandbox
+      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+        name: Install doctl serverless plugin
+        run: |
+          doctl serverless install
       - name: Deploy to DigitalOcean Serverless
         run: |
           doctl serverless deploy .
