@@ -24,4 +24,4 @@ jobs:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
       - name: Deploy to DigitalOcean Serverless
         run: |
-          doctl serverless deploy --project-file project.yml
+          doctl serverless deploy .
