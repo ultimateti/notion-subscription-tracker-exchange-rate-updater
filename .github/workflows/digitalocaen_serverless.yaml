@@ -33,7 +33,7 @@ jobs:
       - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
         name: Install doctl serverless plugin
         run: |
-          doctl serverless install
+          doctl serverless install && doctl serverless connect
       - name: Deploy to DigitalOcean Serverless
         run: |
           doctl serverless deploy .
