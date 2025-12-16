@@ -30,7 +30,7 @@ jobs:
         with:
           path: ~/.config/doctl/sandbox
           key: ${{ runner.os }}-doctl-sandbox
-      - if: ${{ steps.cache-npm.outputs.cache-hit != 'true' }}
+      - if: ${{ steps.cache-doctl-serverless.outputs.cache-hit != 'true' }}
         name: Install doctl serverless plugin
         run: |
           doctl serverless install && doctl serverless connect
